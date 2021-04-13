@@ -1,0 +1,26 @@
+{% extends "users/base.html" %} {% load crispy_forms_tags %} {% block content %}
+<div class="content-section">
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Results</legend>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if result %} {% for dp in result %}
+          <tr>
+            <td>{{dp.text}}</td>
+            <td>{{dp.category}}</td>
+          </tr>
+          {% endfor %} {% endif %}
+        </tbody>
+      </table>
+    </fieldset>
+  </form>
+</div>
+{% endblock content%}
